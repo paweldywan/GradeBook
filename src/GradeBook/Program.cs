@@ -6,8 +6,7 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var numbers = new double[3];
-            
+            var numbers = new double[3];         
             numbers[0] = 12.7;
 
             if(args.Length > 0)
