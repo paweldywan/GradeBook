@@ -52,19 +52,19 @@ namespace GradeBook.Tests
             book = new Book(name);
         }
 
-        [Fact]
-        public void CanSetNameFromReference()
-        {
-            var book1 = GetBook("Book 1");
-            SetName(book1, "New Name");
+        // [Fact]
+        // public void CanSetNameFromReference()
+        // {
+        //     var book1 = GetBook("Book 1");
+        //     SetName(book1, "New Name");
 
-            Assert.Equal("New Name", book1.Name);
-        }
+        //     Assert.Equal("New Name", book1.Name);
+        // }
 
-        private void SetName(Book book, string name)
-        {
-            book.Name = name;
-        }
+        // private void SetName(Book book, string name)
+        // {
+        //     book.Name = name;
+        // }
 
         [Fact]
         public void StringsBehaveLikeValueTypes()
