@@ -3,16 +3,6 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
-    public class Person
-    {
-
-    }
-
-    public struct Point
-    {
-
-    }
-
     public class TypeTests
     {
         [Fact]
