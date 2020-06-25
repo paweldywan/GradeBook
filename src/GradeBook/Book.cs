@@ -15,6 +15,14 @@ namespace GradeBook
         public string Name { get; set; }
     }
 
+    public interface IBook
+    {
+        void AddGrade(double grade);
+        Statistics GetStatistics();
+        string Name { get; }
+        event GradeAddedDelegate GradeAdded;
+    }
+
     public abstract class Book : NamedObject
     {
         protected Book(string name) : base(name)
