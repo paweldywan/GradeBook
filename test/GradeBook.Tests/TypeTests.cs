@@ -3,10 +3,40 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+    public delegate string WriteLogDelegate(string logMessage);
+
     public class TypeTests
     {
+        int count = 0;
+
         [Fact]
-        public void Test1()
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log = ReturnMessage;
+
+            log += ReturnMessage;
+            log += IncrementCount;
+
+            var result = log("Hello!");
+            Assert.Equal(3, count);
+            Assert.Equal("hello!", result);
+        }
+
+        string IncrementCount(string message)
+        {
+            count++;
+            return message.ToLower();
+        }
+
+        string ReturnMessage(string message)
+        {
+            count++;
+            return message;
+        }
+
+
+        [Fact]
+        public void ValueTypesAlsoPassByValue()
         {
             var x = GetInt();
             SetInt(ref x);
@@ -52,19 +82,19 @@ namespace GradeBook.Tests
             book = new Book(name);
         }
 
-        // [Fact]
-        // public void CanSetNameFromReference()
-        // {
-        //     var book1 = GetBook("Book 1");
-        //     SetName(book1, "New Name");
+        [Fact]
+        public void CanSetNameFromReference()
+        {
+            var book1 = GetBook("Book 1");
+            SetName(book1, "New Name");
 
-        //     Assert.Equal("New Name", book1.Name);
-        // }
+            Assert.Equal("New Name", book1.Name);
+        }
 
-        // private void SetName(Book book, string name)
-        // {
-        //     book.Name = name;
-        // }
+        private void SetName(Book book, string name)
+        {
+            book.Name = name;
+        }
 
         [Fact]
         public void StringsBehaveLikeValueTypes()

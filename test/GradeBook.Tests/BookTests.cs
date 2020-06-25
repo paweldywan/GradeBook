@@ -29,13 +29,13 @@ namespace GradeBook.Tests
         {
             // arrange
             var book = new Book("");
-            book.AddGrade(105);
 
             // act
             var result = book.GetStatistics().High;
 
             // assert
             Assert.Equal(double.MinValue, result);
+            Assert.Throws<ArgumentException>(() => book.AddGrade(105));
         }
     }
 }
